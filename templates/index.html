@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/viit_logo.png') }}">
+</head>
+<body>
+    <nav style="display:flex; align-items:center; padding:12px 20px; background:#0d1b2a; border-bottom:1px solid #1e3a5f;">
+        <a href="/" style="display:flex; align-items:center; text-decoration:none; gap:10px;">
+            <img src="{{ url_for('static', filename='images/viit_logo.png') }}"
+                 alt="VIIT Logo"
+                 style="height:48px; width:auto; object-fit:contain;">
+        </a>
+        <h2 style="color: #90caf9; margin: 0; font-size: 1.1rem; margin-left: auto;">Campus Navigator</h2>
+    </nav>
+
+    <main>
+        <!-- Homepage hero logo -->
+        <div style="text-align:center; padding:32px 0 16px;">
+            <img src="{{ url_for('static', filename='images/viit_logo.png') }}"
+                 alt="VIIT Logo"
+                 style="height:80px; width:auto; object-fit:contain;">
+            <h1 style="color:#90caf9; margin:12px 0 4px; font-size:22px;">
+                VIIT Campus Navigator
+            </h1>
+            <p style="color:#4a6fa5; font-size:14px; margin:0;">
+                Vignan's Institute of Information Technology, Duvvada
+            </p>
+        </div>
+
+        <div class="search-section">
+            <div class="search-bar">
+                <input type="text" id="mainSearch" placeholder="Search for a room, lab, or facility (e.g. DB-37, Steve Jobs)..." onkeyup="filterLocations()">
+            </div>
+            <div class="filters">
+                <select id="blockFilter" onchange="filterLocations()">
+                    <option value="">All Blocks</option>
+                    <option value="Dharithri">Dharithri Block</option>
+                    <option value="Main Block">Main Block</option>
+                    <option value="Campus">Campus Areas</option>
+                </select>
+                <select id="floorFilter" onchange="filterLocations()">
+                    <option value="">All Floors</option>
+                    <option value="0">Ground Floor (0)</option>
+                    <option value="1">1st Floor</option>
+                    <option value="2">2nd Floor</option>
+                    <option value="3">3rd Floor</option>
+                    <option value="4">4th Floor</option>
+                </select>
+                <select id="typeFilter" onchange="filterLocations()">
+                    <option value="">All Types</option>
+                    <option value="Lab">Labs</option>
+                    <option value="Lecture Hall">Lecture Halls</option>
+                    <option value="Office">Offices</option>
+                    <option value="Library">Library</option>
+                    <option value="Facility">Facilities</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="results-grid" id="locationsGrid">
+            {% for loc in locations %}
+            <a href="{{ url_for('detail', loc_id=loc.id) }}" class="location-card" 
+               data-name="{{ loc.name }}" 
+               data-id="{{ loc.id }}" 
+               data-block="{{ loc.block }}" 
+               data-floor="{{ loc.floor }}" 
+               data-type="{{ loc.type }}">
+                <div class="card-id">{{ loc.id }}</div>
+                <div class="card-title">{{ loc.name }}</div>
+                <div class="badge-container">
+                    <span class="badge">{{ loc.block }}</span>
+                    <span class="badge">Floor {{ loc.floor }}</span>
+                </div>
+                <div class="card-info">
+                    <span>🏢</span> {{ loc.description }}
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </main>
+
+    <script>
+        function filterLocations() {
+            const searchVal = document.getElementById('mainSearch').value.toLowerCase();
+            const blockVal = document.getElementById('blockFilter').value;
+            const floorVal = document.getElementById('floorFilter').value;
+            const typeVal = document.getElementById('typeFilter').value;
+
+            const cards = document.querySelectorAll('.location-card');
+
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name').toLowerCase();
+                const id = card.getAttribute('data-id').toLowerCase();
+                const block = card.getAttribute('data-block');
+                const floor = card.getAttribute('data-floor');
+                const type = card.getAttribute('data-type');
+
+                const matchesSearch = name.includes(searchVal) || id.includes(searchVal);
+                const matchesBlock = !blockVal || block === blockVal;
+                const matchesFloor = !floorVal || floor === floorVal;
+                const matchesType = !typeVal || type === typeVal;
+
+                if (matchesSearch && matchesBlock && matchesFloor && matchesType) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

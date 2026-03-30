@@ -1,0 +1,60 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg"
+     style="width:100%;height:auto;background:#1a1a2e;">
+
+  <defs>
+    <style>
+      .room { fill:#16213e; stroke:#378ADD; stroke-width:1.5; rx:4; }
+      .room-label { fill:#90caf9; font-size:11px; font-family:sans-serif;
+                    text-anchor:middle; dominant-baseline:central; }
+      .room-highlight { fill:#e53935 !important; stroke:#ff6b6b !important; stroke-width:2; }
+      .corridor { fill:#0d1b2a; stroke:#2a3f5f; stroke-width:1; }
+      .staircase { fill:#4a148c; stroke:#7b1fa2; stroke-width:1.5; }
+      .lift { fill:#1565C0; stroke:#1976D2; stroke-width:1.5; }
+    </style>
+  </defs>
+
+  <rect x="20" y="20" width="760" height="360" rx="8" fill="none" stroke="#378ADD" stroke-width="2"/>
+
+  <!-- Left wing (DB-41-49) -->
+  <rect id="DB-41" class="room" x="30" y="30" width="50" height="80"/>
+  <text class="room-label" x="55" y="75">DB-41</text>
+  <rect id="DB-42" class="room" x="90" y="30" width="50" height="80"/>
+  <text class="room-label" x="115" y="75">DB-42</text>
+  <rect id="DB-43" class="room" x="150" y="30" width="50" height="80"/>
+  <text class="room-label" x="175" y="75">DB-43</text>
+  <rect id="DB-44" class="room" x="210" y="30" width="50" height="80"/>
+  <text class="room-label" x="235" y="75">DB-44</text>
+  <rect id="DB-45" class="room" x="270" y="30" width="50" height="80"/>
+  <text class="room-label" x="295" y="75">DB-45</text>
+  <rect id="DB-46" class="room" x="330" y="30" width="30" height="80"/>
+  <text class="room-label" x="345" y="75">DB-46</text>
+  
+  <rect id="DB-47" class="room" x="30" y="120" width="100" height="70"/>
+  <text class="room-label" x="80" y="155">DB-47</text>
+  <rect id="DB-48" class="room" x="140" y="120" width="100" height="70"/>
+  <text class="room-label" x="190" y="155">DB-48</text>
+  <rect id="DB-49" class="room" x="250" y="120" width="100" height="70"/>
+  <text class="room-label" x="300" y="155">DB-49</text>
+
+  <rect class="staircase" x="360" y="30" width="60" height="80" rx="4"/>
+  <rect class="lift" x="430" y="30" width="40" height="40" rx="4"/>
+
+  <!-- Right wing (DA-41-45) -->
+  <rect id="DA-41" class="room" x="520" y="30" width="80" height="80"/>
+  <text class="room-label" x="560" y="75">DA-41</text>
+  <rect id="DA-42" class="room" x="610" y="30" width="80" height="80"/>
+  <text class="room-label" x="650" y="75">DA-42</text>
+  <rect id="DA-43" class="room" x="700" y="30" width="70" height="80"/>
+  <text class="room-label" x="735" y="75">DA-43</text>
+  <rect id="DA-44" class="room" x="520" y="120" width="120" height="70"/>
+  <text class="room-label" x="580" y="155">DA-44</text>
+  <rect id="DA-45" class="room" x="650" y="120" width="120" height="70"/>
+  <text class="room-label" x="710" y="155">DA-45</text>
+
+  <rect class="corridor" x="20" y="200" width="760" height="30"/>
+  <text fill="#4a6fa5" font-size="10px" font-family="sans-serif" text-anchor="middle" x="400" y="218">CORRIDOR</text>
+
+  <text fill="#378ADD" font-size="14px" font-family="sans-serif" font-weight="bold" text-anchor="middle" x="400" y="355">
+    DHARITHRI BLOCK — FOURTH FLOOR
+  </text>
+</svg>

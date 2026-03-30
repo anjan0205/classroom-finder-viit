@@ -1,0 +1,102 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg"
+     style="width:100%;height:auto;background:#1a1a2e;">
+
+  <defs>
+    <style>
+      .room { fill:#16213e; stroke:#378ADD; stroke-width:1.5; rx:4; }
+      .room-label { fill:#90caf9; font-size:11px; font-family:sans-serif;
+                    text-anchor:middle; dominant-baseline:central; }
+      .room-highlight { fill:#e53935 !important; stroke:#ff6b6b !important; stroke-width:2; }
+      .corridor { fill:#0d1b2a; stroke:#2a3f5f; stroke-width:1; }
+      .staircase { fill:#4a148c; stroke:#7b1fa2; stroke-width:1.5; }
+      .lift { fill:#1565C0; stroke:#1976D2; stroke-width:1.5; }
+      .wall { stroke:#378ADD; stroke-width:2; fill:none; }
+    </style>
+  </defs>
+
+  <!-- Outer walls -->
+  <rect x="20" y="20" width="760" height="360" rx="8"
+        fill="none" stroke="#378ADD" stroke-width="2"/>
+
+  <!-- Left wing (DB side) -->
+  <!-- DB-02 Engineering Drawing Hall 2 -->
+  <rect id="DB-02" class="room" x="30" y="30" width="200" height="80"/>
+  <text class="room-label" x="130" y="70">DB-02</text>
+  <text class="room-label" x="130" y="85" font-size="9px">Eng. Drawing Hall 2</text>
+
+  <!-- DB-01 Physics Lab -->
+  <rect id="DB-01" class="room" x="240" y="30" width="100" height="80"/>
+  <text class="room-label" x="290" y="65">DB-01</text>
+  <text class="room-label" x="290" y="80" font-size="9px">Physics Lab</text>
+
+  <!-- DB-03 Staff -->
+  <rect id="DB-03" class="room" x="30" y="120" width="60" height="70"/>
+  <text class="room-label" x="60" y="155">DB-03</text>
+
+  <!-- DB-04 Chemistry Lab -->
+  <rect id="DB-04" class="room" x="100" y="120" width="180" height="70"/>
+  <text class="room-label" x="190" y="150">DB-04</text>
+  <text class="room-label" x="190" y="165" font-size="9px">Chemistry Lab (BSH)</text>
+
+  <!-- DB-05 Staff Room -->
+  <rect id="DB-05" class="room" x="290" y="120" width="60" height="70"/>
+  <text class="room-label" x="320" y="155">DB-05</text>
+
+  <!-- FT-L -->
+  <rect id="FT-L" class="room" x="30" y="200" width="60" height="50"/>
+  <text class="room-label" x="60" y="225" font-size="9px">FT-L</text>
+
+  <!-- Central staircase -->
+  <rect class="staircase" x="360" y="30" width="60" height="80" rx="4"/>
+  <text fill="#ce93d8" font-size="10px" font-family="sans-serif"
+        text-anchor="middle" x="390" y="75">STAIR</text>
+
+  <!-- Lift -->
+  <rect class="lift" x="430" y="30" width="40" height="40" rx="4"/>
+  <text fill="#90caf9" font-size="9px" font-family="sans-serif"
+        text-anchor="middle" x="450" y="55">LIFT</text>
+
+  <!-- Electricity Room -->
+  <rect class="room" x="430" y="80" width="80" height="30"/>
+  <text class="room-label" x="470" y="95" font-size="9px">Electricity Room</text>
+
+  <!-- Right wing (DA side) -->
+  <!-- DA-01 Staff Room -->
+  <rect id="DA-01" class="room" x="520" y="30" width="60" height="80"/>
+  <text class="room-label" x="550" y="65">DA-01</text>
+  <text class="room-label" x="550" y="80" font-size="9px">SR</text>
+
+  <!-- DA-02A E/APL -->
+  <rect id="DA-02A" class="room" x="590" y="30" width="100" height="80"/>
+  <text class="room-label" x="640" y="65">DA-02(A)</text>
+  <text class="room-label" x="640" y="80" font-size="9px">E/APL</text>
+
+  <!-- DA-02B D-PHY-L -->
+  <rect id="DA-02B" class="room" x="700" y="30" width="70" height="80"/>
+  <text class="room-label" x="735" y="65">DA-02(B)</text>
+  <text class="room-label" x="735" y="80" font-size="9px">D-PHY-L</text>
+
+  <!-- DA-04 Staff Room -->
+  <rect id="DA-04" class="room" x="520" y="120" width="60" height="70"/>
+  <text class="room-label" x="550" y="155">DA-04</text>
+
+  <!-- DA-03 Engineering Drawing Hall 1 -->
+  <rect id="DA-03" class="room" x="590" y="120" width="180" height="70"/>
+  <text class="room-label" x="680" y="150">DA-03</text>
+  <text class="room-label" x="680" y="165" font-size="9px">Eng. Drawing Hall 1</text>
+
+  <!-- Corridor -->
+  <rect class="corridor" x="20" y="200" width="760" height="30"/>
+  <text fill="#4a6fa5" font-size="10px" font-family="sans-serif"
+        text-anchor="middle" x="400" y="218">CORRIDOR</text>
+
+  <!-- Compass -->
+  <text fill="#90caf9" font-size="12px" font-family="sans-serif"
+        x="740" y="370">N ↑</text>
+
+  <!-- Floor label -->
+  <text fill="#378ADD" font-size="14px" font-family="sans-serif"
+        font-weight="bold" text-anchor="middle" x="400" y="355">
+    DHARITHRI BLOCK — GROUND FLOOR
+  </text>
+</svg>

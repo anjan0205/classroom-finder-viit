@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ loc.name }} | {{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/viit_logo.png') }}">
+</head>
+<body>
+    <nav style="display:flex; align-items:center; padding:12px 20px; background:#0d1b2a; border-bottom:1px solid #1e3a5f;">
+        <a href="/" style="display:flex; align-items:center; text-decoration:none; gap:10px;">
+            <img src="{{ url_for('static', filename='images/viit_logo.png') }}"
+                 alt="VIIT Logo"
+                 style="height:48px; width:auto; object-fit:contain;">
+        </a>
+        <h2 style="color: #90caf9; margin: 0; font-size: 1.1rem; margin-left: auto;">Campus Navigator</h2>
+    </nav>
+    <div class="detail-container">
+        <div class="detail-card">
+            <div class="detail-header">
+                <div>
+                    <div class="card-id">📍 {{ loc.id }}</div>
+                    <h1>{{ loc.name }}</h1>
+                    <p style="color: var(--text-secondary)">🏢 {{ loc.block }} | 🔢 Floor {{ loc.floor }} | 🏷️ {{ loc.type }}</p>
+                </div>
+                <div class="actions">
+                    <button class="btn btn-secondary" onclick="alert('QR Code / Share link copied to clipboard!')">
+                        <span>🔗</span> Share
+                    </button>
+                </div>
+            </div>
+
+            <p>{{ loc.description }}</p>
+
+            <div class="directions-section">
+                <h3>🚶 Step-by-Step Directions</h3>
+                <div class="directions-list">
+                    {% for step in loc.directions_list %}
+                    <div class="direction-step">
+                        <div class="step-num">{{ loop.index }}</div>
+                        <div class="step-text">{{ step }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="map-section">
+                <div class="map-toggle">
+                    <button id="btn-pin" class="toggle-btn active" onclick="showMap('pin')">📍 View Location</button>
+                    <button id="btn-route" class="toggle-btn" onclick="showMap('route')">🚶 Walking Route from My Location</button>
+                </div>
+
+                {% if loc.is_indoor %}
+                <div class="indoor-warning">
+                    <span>⚠️</span>
+                    Map shows route from your location to {{ loc.block }} entrance. Follow step-by-step directions to reach {{ loc.name }} inside.
+                </div>
+                {% endif %}
+
+                <div class="map-container" id="container-pin">
+                    <iframe src="{{ loc.map_embed_url }}" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+                <div class="map-container" id="container-route" style="display: none;">
+                    <iframe src="{{ loc.map_directions_url }}" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+                <a href="{{ loc.map_directions_url }}" target="_blank" class="btn btn-secondary">
+                    🗺️ Open Full Route in Google Maps App
+                </a>
+                <a href="{{ url_for('index') }}" class="btn btn-primary">← Back to Search</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showMap(type) {
+            const pinContainer = document.getElementById('container-pin');
+            const routeContainer = document.getElementById('container-route');
+            const btnPin = document.getElementById('btn-pin');
+            const btnRoute = document.getElementById('btn-route');
+
+            if (type === 'pin') {
+                pinContainer.style.display = 'block';
+                routeContainer.style.display = 'none';
+                btnPin.classList.add('active');
+                btnRoute.classList.remove('active');
+            } else {
+                pinContainer.style.display = 'none';
+                routeContainer.style.display = 'block';
+                btnPin.classList.remove('active');
+                btnRoute.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
